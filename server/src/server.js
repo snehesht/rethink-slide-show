@@ -17,7 +17,7 @@ app.use(cors())
 app.use('/health', (req, res) => res.send('OK')); // Health check
 app.use('/api/v1', apiRouter);
 
-// app.use(express.static('public'))
+app.use(express.static('public'))
 
 let server;
 const startServer = async (port = 8000) => {

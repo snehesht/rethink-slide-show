@@ -51,9 +51,10 @@ slideShowRouter.get('/file/:id', (req, res) => {
 
 slideShowRouter.post('/file', upload.single('slide'), (req, res) => {
   try {
-    console.log(req.file)
-    fileList.set(req.file.filename, req.file)
-    return res.send(Object.assign({}, req.file, { url: `${BASE_URI}/api/v1/slideshow/file/${req.file.filename}`}))
+    
+    const file = Object.assign({}, req.file, { url: `${BASE_URI}/api/v1/slideshow/file/${req.file.filename}` });
+    fileList.set(req.file.filename, file)
+    return res.send(file)
   } catch (error) {
     logger.error(`Failed to upload file, ${error.message}`);
     return res.status(400).send({ error: 'Failed to upload' });

@@ -16,7 +16,10 @@ function App() {
   
 
   return (
-    <SlideShow files={files} />
+    <div>
+      <h1>Slide Show</h1>
+      <SlideShow files={files} />
+    </div>
   );
 }
 
